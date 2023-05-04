@@ -29,7 +29,7 @@ fetchPhotos(keyword, pageNum) // eslint-disable-next-line
       {
       photos.map((photo) => {
           return (
-            <Image title={photo.title} server={photo.server} id={photo.id} secret={photo.secret} key={photo.id} />
+            <Image  title={photo.tags} url={photo.webformatURL} key={photo.id} />
           );
       })}
     </div>
@@ -39,7 +39,7 @@ fetchPhotos(keyword, pageNum) // eslint-disable-next-line
   : (
     <div className="empty">No images were found.
     Here's a cat
-    <img src="https://i.imgur.com/MqGBqZs.gif" ></img>
+    <img alt="cat-hug" src="https://i.imgur.com/MqGBqZs.gif" ></img>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <>
     <nav className="nav">
-      <h1>Flickr Gallery</h1>
+      <h1>Pixabay Gallery</h1>
       <div className="search">
       <div className="searchBar">
         <i className="fa-solid fa-magnifying-glass"></i>
