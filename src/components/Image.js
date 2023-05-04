@@ -1,10 +1,10 @@
-const Image = ({title, server, id, secret}) => {
+const Image = ({title, url}) => {
     return ( 
 <div className="imgContainer">
-              <img
+              <img width={'200px'}
                 title={title}
                 alt={title}
-                src={`https://live.staticflickr.com/${server}/${id}_${secret}_m.jpg`}
+                src={url}
               ></img>
             </div>
      );

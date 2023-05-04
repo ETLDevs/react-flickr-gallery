@@ -11,7 +11,7 @@ const PhotoContextProvider = (props) => {
   const fetchPhotos = (query, pageNum) => {
     setIsLoading(true);
     
-    const url = query === 'recent' ? `https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=${API_KEY}&format=json&nojsoncallback=1&per_page=12&page=${pageNum}` : `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${API_KEY}&tags=${query}&format=json&nojsoncallback=1&per_page=12&page=${pageNum}`;
+    const url = query === 'recent' ? `https://pixabay.com/api/?key=${API_KEY}&image_type=photo&page=${pageNum}&order=latest` : `https://pixabay.com/api/?key=${API_KEY}&q=${query}&image_type=photo&page=${pageNum}`;
     
     fetch(url)
       .then((res) => {
@@ -20,7 +20,7 @@ const PhotoContextProvider = (props) => {
       .then((data) => {
 
         if (pageNum > 1) {
-          data.photos.photo.forEach((photo) => {
+          data.hits.forEach((photo) => {
             if (!ids.includes(photo.id)){
              setPhotos((current) => [...current, photo]);}
           });
@@ -28,9 +28,9 @@ const PhotoContextProvider = (props) => {
         } 
         if(pageNum === 1) {
           setIds([]);
-          setPhotos(data.photos.photo);
+          setPhotos(data.hits);
         }
-        data.photos.photo.forEach((photo) => {
+        data.hits.forEach((photo) => {
           setIds((current) => [...current, photo.id]);
         });
         setIsLoading(false);

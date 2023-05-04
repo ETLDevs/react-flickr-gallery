@@ -31,7 +31,7 @@ fetchPhotos(keyword, pageNum) // eslint-disable-next-line
       {
       photos.map((photo) => {
           return (
-            <Image title={photo.title} server={photo.server} id={photo.id} secret={photo.secret} key={photo.id} />
+            <Image title={photo.tags} url={photo.webformatURL} key={photo.id} />
           );
       })}
     </div>
