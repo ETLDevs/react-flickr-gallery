@@ -10,7 +10,6 @@ function App() {
       <PhotoContextProvider>
         <Router>
           <Navbar />
-          <hr></hr>
           <Switch>
           <Route exact path="/">
               <Gallery query={'recent'}/>
