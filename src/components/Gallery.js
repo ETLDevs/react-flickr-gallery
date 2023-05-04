@@ -11,8 +11,6 @@ const [pageNum, setPageNum] = useState(1);
 
 const keyword = query ? query : searchValue 
 
-
-console.log(keyword)
 useEffect(() => {
   setPageNum(1)
 }, [keyword])
@@ -39,7 +37,10 @@ fetchPhotos(keyword, pageNum) // eslint-disable-next-line
     </>
   ) 
   : (
-    <div>No images were found :(</div>
+    <div className="empty">No images were found.
+    Here's a cat
+    <img src="https://i.imgur.com/MqGBqZs.gif" ></img>
+    </div>
   );
 };
 
