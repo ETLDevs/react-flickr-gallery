@@ -7,7 +7,7 @@ const LoadMore = ({pageNum, setPageNum}) => {
  return (
     <div className="loadMore">
       {isLoading ? (
-        <div className="loader">LOADING</div>
+        <div className="loader"></div>
       ) : (
         <button
           onClick={() => {
