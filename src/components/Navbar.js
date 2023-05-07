@@ -18,7 +18,7 @@ const Navbar = () => {
           onChange={e => setSearchValue(e.target.value)}
         />
       </div>
-      <button onClick={() => setSearchValue('')}><Link to={`/search/${searchValue}`}> SEARCH</Link></button>
+      <Link onClick={() => setSearchValue('')} to={`/search/${searchValue}`}> SEARCH</Link>
       </div>
       <div className="buttonGroup">
       <Link to={'/'}>HOME</Link>
