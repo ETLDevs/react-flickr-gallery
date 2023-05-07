@@ -22,7 +22,7 @@ fetchPhotos(keyword, pageNum) // eslint-disable-next-line
 
 
   return photos.length  ? (
-    <>
+    <div className="galleryContainer">
     <h2>results of {keyword}</h2>
     <h3>{photos.length} images</h3>
     <div className="gallery">
@@ -34,8 +34,8 @@ fetchPhotos(keyword, pageNum) // eslint-disable-next-line
       })}
     </div>
     <LoadMore pageNum={pageNum} setPageNum={setPageNum}/>
-    </>
-  ) 
+    </div>
+) 
   : (
     <div className="empty">No images were found.
     Here's a cat
