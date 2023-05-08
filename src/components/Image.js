@@ -1,12 +1,21 @@
-const Image = ({title, url}) => {
+
+
+const Image = ({title, url, setTarget}) => {
+
+ 
     return ( 
-<div className="imgContainer">
-              <img width={'200px'}
+      <>
+      
+<div className="imgContainer" >
+              <img className="galleryImg"
+               width={'200px'}
                 title={title}
                 alt={title}
                 src={url}
               ></img>
             </div>
+           
+            </>
      );
 }
  
