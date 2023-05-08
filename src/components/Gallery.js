@@ -3,37 +3,44 @@ import { PhotoContext } from "../contexts/PhotoContext";
 import Image from "./Image";
 import LoadMore from "./LoadMore";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import Carousel from "./Carousel";
 
 const Gallery = ({query}) => {
 const {fetchPhotos, photos} = useContext(PhotoContext);
 const {searchValue} = useParams()
 const [pageNum, setPageNum] = useState(1);
-
+const [target,  setTarget] = useState('')
 const keyword = query ? query : searchValue 
-
 useEffect(() => {
   setPageNum(1)
 }, [keyword])
-
 useEffect(() => {
 fetchPhotos(keyword, pageNum) // eslint-disable-next-line 
 }, [pageNum, keyword])
-
 
 
   return photos.length  ? (
     <div className="galleryContainer">
     <h2>results of {keyword}</h2>
     <h3>{photos.length} images</h3>
-    <div className="gallery">
+    <div className="gallery"
+    onClick={ e => {
+     if(e.target.classList.contains('galleryImg')) {
+     setTarget(e.target.parentElement)
+    //  document.querySelector('.carouselModal').classList.remove('hidden')
+     }
+    }}
+    >
       {
       photos.map((photo) => {
           return (
-            <Image  title={photo.tags} url={photo.webformatURL} key={photo.id} />
+            
+            <Image  title={photo.tags} url={photo.webformatURL} key={photo.id} setTarget={setTarget}/>
           );
       })}
     </div>
     <LoadMore pageNum={pageNum} setPageNum={setPageNum}/>
+    {target && <Carousel target={target} setTarget={setTarget}/>}
     </div>
 ) 
   : (
