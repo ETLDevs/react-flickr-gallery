@@ -52,7 +52,7 @@ h3 {
   color: var(--secondary);
 }
 
-.search >  a {
+.search > a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,6 +118,7 @@ h3 {
 
 .galleryContainer {
   height: 80vh;
+  overflow: hidden;
 }
 
 .gallery {
@@ -136,7 +137,7 @@ h3 {
 
 .imgContainer {
   width: 100%;
-  height: 200px; 
+  height: 200px;
   padding: 5%;
   overflow: hidden;
   display: grid;
@@ -184,22 +185,63 @@ h3 {
 .carousel {
   display: grid;
   justify-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1%;
+  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.carousel > button {
-  background: none;
-  border: none;
-  font-size: 30px;
-  color: var(--background);
-  cursor: pointer;
+.carouselImg {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
+.carouselImg > img {
+  width:100%;
+  height: auto;
+}
+
+.btnsContainer {
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+}
+
+.btnsContainer > button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--background);
+  cursor: pointer;
+  background-color: var(--primary);
+  border-radius: 180px;
+  width: 30px;
+}
+
+.carouselImgDetails {
+  text-transform: capitalize;
+  position: absolute;
+  bottom: 0px;
+  background-image: linear-gradient(to top, var(--primary), #58727f00);
+  color: var(--background);
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: start;
+  align-items: end;
+  font-size:large;
+  opacity: 0;
+  transition-duration: 2s;
+}
+.carouselImgDetails:hover {
+  opacity: 100;
+  transition-duration: 1s;
+}
 .darkBg {
   position: absolute;
   top: 50%;
@@ -207,10 +249,7 @@ h3 {
   transform: translate(-50%, -50%);
   width: 100vw;
   height: 100vh;
-  background-color: var(--primaryTransperent)
-}
-.hidden {
-  display: none;
+  background-color: var(--primaryTransperent);
 }
 
 @keyframes rotate {
@@ -222,35 +261,32 @@ h3 {
   }
 }
 
-@media (max-width:950px) {
-  .search{
-    width: 80%
+@media (max-width: 950px) {
+  .search {
+    width: 80%;
   }
   .buttonGroup > a {
     margin: 0 1%;
   }
   .gallery {
-   grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
-   
- }
-
-@media (max-width:750px) {
- 
- .gallery {
-  grid-template-columns: repeat(2, 1fr);
- }
-  
 }
 
-@media (max-width:480px) {
+@media (max-width: 750px) {
   .gallery {
-   grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
-   .imgContainer{
-    width:100%
-   }
-   .imgContainer > img {
-   width: 100%
-   }
- }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .imgContainer {
+    width: 100%;
+  }
+  .imgContainer > img {
+    width: 100%;
+  }
+}
