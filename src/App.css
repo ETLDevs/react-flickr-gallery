@@ -1,5 +1,6 @@
 :root {
   --primary: #58727f;
+  --primaryTransperent: rgba(88, 114, 127, 0.7);
   --secondary: #83afa6;
   --background: #e5e5e5;
 }
@@ -151,7 +152,7 @@ h3 {
 }
 
 .imgContainer > img:hover {
-  transform: scale(1.5);
+  transform: scale(1.2);
   transition-duration: 2s;
   transition-timing-function: ease;
 }
@@ -178,6 +179,38 @@ h3 {
   animation-name: rotate;
   animation-duration: 1s;
   animation-iteration-count: infinite;
+}
+
+.carousel {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.carousel > button {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: var(--background);
+  cursor: pointer;
+}
+
+.darkBg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--primaryTransperent)
+}
+.hidden {
+  display: none;
 }
 
 @keyframes rotate {
