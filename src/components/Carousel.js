@@ -1,5 +1,4 @@
-// import { useContext } from "react";
-// import { PhotoContext } from "../contexts/PhotoContext";
+import Image from "./Image";
 
 const Carousel = (props) => {
   const { target, setTarget } = props;
@@ -8,29 +7,39 @@ const Carousel = (props) => {
       <div className="darkBg" onClick={() => setTarget(null)}></div>
 
       <div className="carousel">
-      <div className="btnsContainer">
-            <button
-              onClick={() => {
-                setTarget(target.previousSibling);
-                if (!target.previousSibling)
-                  setTarget(target.parentElement.lastChild);
-              }}
-            >
-              <i className="fa-solid fa-arrow-left fa-beat"></i>
-            </button>
-            <button
-              onClick={() => {
-                setTarget(target.nextSibling);
-                if (!target.nextSibling)
-                  setTarget(target.parentElement.firstChild);
-              }}
-            >
-              <i className="fa-solid fa-arrow-right fa-beat"></i>
-            </button>
-          </div>
+        <div className="btnsContainer">
+          <button
+            onClick={() => {
+              if (!target) return setTarget(null);
+              setTarget(
+                target.previousSibling
+                  ? target.previousSibling
+                  : target.parentElement.lastChild
+              );
+            }}
+          >
+            <i className="fa-solid fa-arrow-left fa-beat"></i>
+          </button>
+          <button
+            onClick={() => {
+              setTarget(
+                target.nextSibling
+                  ? target.nextSibling
+                  : target.parentElement.firstChild
+              );
+              // if (!target.nextSibling)
+              //   setTarget(target ?  : null);
+            }}
+          >
+            <i className="fa-solid fa-arrow-right fa-beat"></i>
+          </button>
+        </div>
         <div className="carouselImg">
-          <img src={target.firstChild.src} alt={target.firstChild.alt} />
-          <div className="carouselImgDetails">{target.firstChild.alt}</div>
+          <Image
+            url={target.firstChild.src}
+            title={target.firstChild.alt}
+            id={parseInt(target.firstChild.dataset.id)}
+          />
         </div>
       </div>
     </>
