@@ -1,17 +1,22 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PhotoContext } from "../contexts/PhotoContext";
 
-const LoadMore = ({pageNum, setPageNum}) => {
-  const {  isLoading } = useContext(PhotoContext);
-
- return (
+const LoadMore = (props) => {
+  const { keyword } = props;
+  const { isLoading, fetchPhotos } = useContext(PhotoContext);
+  const [pageNum, setPageNum] = useState(1);
+  useEffect(() => {
+    setPageNum(2);
+  }, [keyword]);
+  return (
     <div className="loadMore">
       {isLoading ? (
         <div className="loader"></div>
       ) : (
         <button
           onClick={() => {
-            setPageNum(pageNum + 1)
+            setPageNum((num) => num + 1);
+            fetchPhotos(keyword, pageNum);
           }}
         >
           LOAD MORE
