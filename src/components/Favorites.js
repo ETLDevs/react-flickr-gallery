@@ -5,9 +5,9 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import Carousel from "./Carousel";
 import { FavoritesContext } from "../contexts/FavoritesContext";
 
-const Gallery = ({ query }) => {
+const Favorites = ({ query }) => {
   const { fetchPhotos, photos } = useContext(PhotoContext);
-  const { storage } = useContext(FavoritesContext);
+  const { storage, setFavorites } = useContext(FavoritesContext);
   const { searchValue } = useParams();
   const [target, setTarget] = useState("");
   const keyword = query ? query : searchValue;
@@ -21,6 +21,10 @@ const Gallery = ({ query }) => {
     <div className="galleryContainer">
       <h2>results of {keyword}</h2>
       <h3>{photos.length} images</h3>
+      <i
+        className="emptyFavorites fa-solid fa-trash-can"
+        onClick={() => setFavorites([])}
+      />
       <div
         className="gallery"
         onClick={(e) => {
@@ -50,4 +54,4 @@ const Gallery = ({ query }) => {
   );
 };
 
-export default Gallery;
+export default Favorites;

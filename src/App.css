@@ -123,6 +123,23 @@ h3 {
   overflow: hidden;
 }
 
+.emptyFavorites {
+  color: var(--primary);
+  font-size: 30px;
+  position: absolute;
+  z-index: 1;
+  top: 27%;
+  left: 3%;
+  transition: 1s;
+  transition-timing-function: ease;
+}
+
+.emptyFavorites:hover {
+  color: var(--secondary);
+  transition: 1s;
+  transition-timing-function: ease;
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
