@@ -29,13 +29,14 @@ const Gallery = ({ query }) => {
           }
         }}
       >
-        {photos.map((photo) => {
+        {photos.map((photo, index) => {
           return (
             <Image
               title={photo.tags}
               url={photo.webformatURL}
               id={photo.id}
               key={photo.id}
+              number={index + 1}
             />
           );
         })}
