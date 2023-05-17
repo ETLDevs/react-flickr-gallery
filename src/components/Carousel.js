@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import { PhotoContext } from "../contexts/PhotoContext";
 import Image from "./Image";
 
 const Carousel = (props) => {
+  const { photos } = useContext(PhotoContext);
   const { target, setTarget } = props;
   return (
     <>
@@ -27,14 +30,16 @@ const Carousel = (props) => {
                   ? target.nextSibling
                   : target.parentElement.firstChild
               );
-              // if (!target.nextSibling)
-              //   setTarget(target ?  : null);
             }}
           >
             <i className="fa-solid fa-arrow-right fa-beat"></i>
           </button>
         </div>
         <div className="carouselImg">
+          <div className="counter">
+            <span>{target.firstChild.dataset.index}</span>/
+            <span>{photos.length}</span>
+          </div>
           <Image
             url={target.firstChild.src}
             title={target.firstChild.alt}
