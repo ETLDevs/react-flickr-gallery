@@ -1,15 +1,41 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { PhotoContext } from "../contexts/PhotoContext";
 import Image from "./Image";
 
 const Carousel = (props) => {
   const { photos } = useContext(PhotoContext);
   const { target, setTarget } = props;
+  const ref = useRef(null);
+
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
+
   return (
     <>
       <div className="darkBg" onClick={() => setTarget(null)}></div>
 
-      <div className="carousel">
+      <div
+        ref={ref}
+        tabIndex={-1}
+        className="carousel"
+        onKeyDown={(e) => {
+          console.log(e);
+          if (e.code === "ArrowRight")
+            return setTarget(
+              target.nextSibling
+                ? target.nextSibling
+                : target.parentElement.firstChild
+            );
+          if (e.code === "ArrowLeft")
+            return setTarget(
+              target.previousSibling
+                ? target.previousSibling
+                : target.parentElement.lastChild
+            );
+          if (e.code === "Escape") return setTarget(null);
+        }}
+      >
         <div className="btnsContainer">
           <button
             onClick={() => {

@@ -15,6 +15,10 @@ const Navbar = () => {
               placeholder="Search Anything"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.code === "Enter")
+                  return (window.location.href = `/search/${searchValue}`);
+              }}
             />
           </div>
           <Link

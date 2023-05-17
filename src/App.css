@@ -235,6 +235,10 @@ h3 {
   transform: translate(-50%, -50%);
 }
 
+.carousel:focus {
+  outline: none;
+}
+
 .carouselImg {
   display: grid;
   justify-content: center;
